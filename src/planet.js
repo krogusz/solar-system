@@ -4,11 +4,10 @@ import * as cos from './Three.js'
 class PlanetScene extends React.Component{
 
   componentDidMount(){
-    cos.setupScene(this.mount);
-    
-    // ThreeElements.renderer.render (ThreeElements.scene, ThreeElements.camera);
+    const {textureURLs, radius, type} = this.props.planetParam;
+    cos.setupScene(this.mount, textureURLs, radius, type);
   }
-
+ 
   render(){
     return(
       <div

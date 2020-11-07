@@ -4,10 +4,18 @@ import './index.css';
 import App from './App';
 import Planet from './planet.js';
 import reportWebVitals from './reportWebVitals';
+import planets from './planets.json'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Planet />
+    <Planet planetParam = {planets['mercury']}/>
+    <Planet planetParam = {planets['earth']}/>
+    <Planet planetParam = {planets['venus'] }/>
+    <Planet planetParam = {planets['mars'] }/>
+    <Planet planetParam = {planets['jupiter'] }/>
+    <Planet planetParam = {planets['saturn'] }/>
+    <Planet planetParam = {planets['uranus'] }/>
+    <Planet planetParam = {planets['neptune'] }/>
   </React.StrictMode>,
   document.getElementById('root')
 );

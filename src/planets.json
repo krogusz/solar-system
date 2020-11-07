@@ -1,0 +1,66 @@
+{
+  "mercury":{
+    "textureURLs": {
+      "planet": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Enhanced_Color_Mercury_Map_%289312772919%29.jpg",
+      "bump": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ea752771-c82e-4eb6-954b-8ae5a5a63733/da72f67-dfbbda62-9aed-484d-8883-f99f9e5df19f.jpg/v1/fill/w_1024,h_512,q_75,strp/mercury_bump_map__not_mine__by_kexitt_da72f67-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01MTIiLCJwYXRoIjoiXC9mXC9lYTc1Mjc3MS1jODJlLTRlYjYtOTU0Yi04YWU1YTVhNjM3MzNcL2RhNzJmNjctZGZiYmRhNjItOWFlZC00ODRkLTg4ODMtZjk5ZjllNWRmMTlmLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.Yve3Z5Mr29IYugMVsgptIa9RF0TjsrBnGztOpSeCsk0"
+    },
+    "radius": "0.383",
+    "type": "inner"
+  },
+  "earth":{
+    "textureURLs": {
+      "planet": "https://supernova.eso.org/static/archives/exhibitionimages/screen/Earth_30k-with-clouds-CC.jpg",
+      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/earthbump1k.jpg"
+    },
+    "radius": "1",
+    "type": "inner"
+  },
+  "venus":{
+    "textureURLs": {
+      "planet": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusmap.jpg",
+      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusbump.jpg"
+    },
+    "radius": "0.95",
+    "type": "inner"
+  },
+  "mars":{
+    "textureURLs": {
+      "planet": "https://raw.githubusercontent.com/lvapeab/miarfid-solar-system/master/textures/marsmap1k.jpg",
+      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusbump.jpg"
+    },
+    "radius": "0.532",
+    "type": "inner"
+  },
+  "jupiter":{
+    "textureURLs": {
+      "planet": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/jupitermap.jpg",
+      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusbump.jpg"
+    },
+    "radius": "10.973",
+    "type": "outer"
+  },
+  "saturn":{
+    "textureURLs": {
+      "planet": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/saturnmap.jpg",
+      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusbump.jpg"
+    },
+    "radius": "9.140",
+    "type": "outer"
+  },
+  "uranus":{
+    "textureURLs": {
+      "planet": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ8NDQ0NDQ0HDQ0NDQ8IDQcNFREWFhURExMYHSggGBolGxUVITEhMSk3Li4uFx8zODMtNygtLjcBCgoKDg0NDg0PGisZFRkrKysrLS0rKysrKysrKysrKysrKystKysrKysrKysrKysrKy0rKysrKysrKysrKysrK//AABEIAJ8BPgMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAwECBP/EAB8QAQEBAQADAQEBAQEAAAAAAAASEQECEyEDUSIxFP/EABgBAQEBAQEAAAAAAAAAAAAAAAABAwIE/8QAGBEBAQEBAQAAAAAAAAAAAAAAABESIQH/2gAMAwEAAhEDEQA/ALQQvBD2PAhBC0EAjBC0EAjBC0EAjBC0NhBCCF4IUQgheCQQgheCAQgheCAQgheCAQgheCAQgheCAQgheCAQgheCAQgheGQCMELQQgjBC8EKIQQvBAIQQvBAIQQvBALSS6vhfG+GG3EkO64UmF04kh3ppg04hsO9NMGnEEO9NMLpxDI6ppphNJd8OkK6zTKaS9fTv595/wAW00wukJ8mZ5PRpphdIevyI8l9NMJpDPJvOdW3hpg0nzxbLvTTBpzLJd6yjBpkktvh3yMGnMENoswaZBDaKMGmQS6tl8MGmSS2+NvhhNsklvsL4uDbJZLbbfEwbTwx1hjaMa5wdYzFhpy3SSSGjTSTvCGjTWBFrdKMMIUo0wkiaNKMJIaNNJbJDTKNJJIaNNbLJIaNKJJIaKNJJIaNZrZMIaZpoEWt1mgQoYY3CFMMdcw+JErnGY7MIVxhjswhXXPAlTCWkZVOTFZICpYYt6+/xvp8v51F6hjO+D0eny/nWevv8Drz+s9a8Eqlef1thaSSFS54t5xSSQqeGKSSFTwxSSQqeGKSSFcYY7kkKnhikkhU8MUkkKnhKktgKjDPW9HPy665+HUddeX1s9b2f+fyZ6PI4deT1nr69Pfz65744sSo8/NsKfTEhXEMhXDCFSgjqveMwi1fDFcJKiX1u9Ukko5559de3yMJRb6zv6+TO+feupJC+p71n1WSVqIyStJJSIyStJJSIyStJJUiMkrSSUiMkrSSUiMkrSSVYjJK0klIjJK0klSIyStJhViX1vO9Ukko4vy/rO96phKL1L6zFpJWojLZVkkpEpJVwwqxKSVcMKkNNcaaiu9NcaUDvTXFFA701xpoO9NcUUDvTXGmg701xRoO9NcUUDvTXGmg701xRoO9NcaaDvTXFFA701xRoO9NcaUDvTXFGg701xpoO9NcaUDvTXGt0HWmuNNCKazXGmg401Oih1FNNTpuhHemudNCOtNc6aEdaa500I601yBHWmsZoR1prnTQjrTWBSN01jUpDTRhSN01gtI3TXOgR1prkCOtNcs0I701xpoR3priigd63U9N6UU1muN6aDvTXFMoI1gOa6g1gUawCgAUgfQKRn03rQpHPe9M66CjnnD66Equd63etCo5zpnXQUc/6P8AToKRz9N66CkZ9b9ApGb1v0FpGN+gUg1gUOgFI3WaBSN1mgUgAUc0yk9NYbb5VopLSjZlSm0lpRsyrRSWlGzKlNpKjTZlWiktNNmVaKS0o2ZVopLTTZlSm0lppsyrTKT0o2ZUptJaUbMq0UlppsyrRSWmmzKtFJaabMq0UlppsyrRSVGmzKtFJaabMq0UlRRsyrRSWmmzKtFJaabMoWWjTKYtV7LQptCrWWhRQi9loUUKvZaNMoF7LRooFrLQptAtZaNFAtZaNMoRey0aZQq9loUUC9lo0UC1lo0UItZaNFAtZaNMoVey0KKBey0KbQi1lo0UC1loUUC9lo0yhX//2Q==",
+      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusbump.jpg"
+    },
+    "radius": "4.007",
+    "type": "outer"
+  },
+  "neptune":{
+    "textureURLs": {
+      "planet": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/neptunemap.jpg",
+      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusbump.jpg"
+    },
+    "radius": "3.883",
+    "type": "outer"
+  }
+}
