@@ -5,7 +5,7 @@ const innerPlanetsScale = 5;
 function setupRenderer(container){
   //create renderer, match their size and append to the document
   const renderer = new THREE.WebGLRenderer({antialias: true});
-  renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setSize( window.innerWidth/2, 800 );
   container.appendChild( renderer.domElement );
   return renderer;
 }
@@ -20,21 +20,21 @@ function setupCamera(){
 
 function createLight(pozX, pozY, pozZ){
   //create Light
-  const colorWhite = new THREE.Color('hsl(309, 100%, 100%)');
+  const colorWhite = new THREE.Color("hsl(309, 100%, 100%)");
   const light = new THREE.PointLight(colorWhite, 100);
   //place light
-  light.position.set(pozX, pozY, pozZ)
+  light.position.set(pozX, pozY, pozZ);
   return light;
 }
 
-function createMesh(radius, type){
-  const scale = type === "inner" ? innerPlanetsScale : outerPlanetsScale
-  const r = Number(radius)*scale;
+function createMesh(radius, type, scaling){
+  const scale = type === "inner" ? innerPlanetsScale : outerPlanetsScale;
+  const r = scaling ? Number(radius)*scale : 10;
   const geometry = new THREE.SphereGeometry(r, 32, 32);
   const material = new THREE.MeshBasicMaterial( {} );
   const cube = new THREE.Mesh( geometry, material );
   return cube;
-} 
+}
 
 function createTextures(textureURLs){
   const loader = new THREE.TextureLoader();
@@ -44,14 +44,15 @@ function createTextures(textureURLs){
       function ( texture ) {  
         resolve(texture);
       },
-    // onProgress callback currently not supported
-    undefined,
-    // onError callback
-    function ( err ) {
-      console.error( 'An error happened.' );
-      reject('uuuuu' );
-    }
-  )});
+      // onProgress callback currently not supported
+      undefined,
+      // onError callback
+      function ( err ) {
+        console.error( "An error happened." , err);
+        reject("An error happened." );
+      }
+    );}
+  );
 
   const bumptexture = new Promise((resolve, reject)=>{
     loader.load(
@@ -59,33 +60,32 @@ function createTextures(textureURLs){
       function ( texture ) {  
         resolve(texture);
       },
-    // onProgress callback currently not supported
-    undefined,
-    // onError callback
-    function ( err ) {
-      console.error( 'An error happened.' );
-      reject('uuuuu' );
-    }
-  )});
+      // onProgress callback currently not supported
+      undefined,
+      // onError callback
+      function ( err ) {
+        console.error( "An error happened.", err );
+        reject("An error happened." );
+      }
+    );}
+  );
   return [earthtexture, bumptexture];
-} 
+}
     
-
 function animate(renderer, scene, camera, cube) {
   requestAnimationFrame( () => animate(renderer, scene, camera, cube) );
   cube.rotation.y += 0.005;
-	renderer.render( scene, camera );
+  renderer.render(scene, camera);
 }
 
 const handleResize = (renderer, camera) => {
-  const {innerWidth, innerHeight} = window;
-  renderer.setSize(innerWidth, innerHeight);
-  camera.aspect = innerWidth / innerHeight;
+  const {innerWidth} = window;
+  renderer.setSize(innerWidth/2, 800);
+  camera.aspect = (innerWidth/2) / 800;
   camera.updateProjectionMatrix();
-}
+};
 
-export function setupScene(container, textureURLs, radius, type){
-  console.log(textureURLs);
+export function setupScene(container, textureURLs, radius, type, scaling){
   // create scene
   const scene = new THREE.Scene();
   const camera = setupCamera();
@@ -93,20 +93,18 @@ export function setupScene(container, textureURLs, radius, type){
   const light1 = createLight(-40, -20, 20);
   const light2 = createLight(40, 20, 20);
   //add cube and light to scene
-  
   scene.add(light1);
   scene.add(light2);
-  const cube = createMesh(radius, type)
+  const cube = createMesh(radius, type, scaling);
   Promise.all(createTextures(textureURLs))
-  .then(([earthtexture, bumptexture]) => {
-    cube.material.map = earthtexture;
-    cube.material.needsUpdate = true;
-
-    cube.material.bumpMap = bumptexture;
-    cube.material.bumpScale = 0;
-    scene.add(cube);
-    animate(renderer, scene, camera, cube);
-    window.addEventListener('resize', handleResize(renderer, camera));
-  })
-  .catch(err => console.log(err));
+    .then(([earthtexture, bumptexture]) => {
+      cube.material.map = earthtexture;
+      cube.material.needsUpdate = true;
+      cube.material.bumpMap = bumptexture;
+      cube.material.bumpScale = 0;
+      scene.add(cube);
+      animate(renderer, scene, camera, cube);
+      window.addEventListener("resize", handleResize(renderer, camera));
+    })
+    .catch(err => console.log(err));
 }
