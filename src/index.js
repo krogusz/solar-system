@@ -2,14 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import Planet from "./planet.js";
+// import System from "./solar-system.js";
 import reportWebVitals from "./reportWebVitals";
 import planets from "./planets.json";
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <System planetParam = {planets["sun"]}/> */}
     <Planet planetParam = {planets["mercury"]} scaling = {false}/>
-    <Planet planetParam = {planets["earth"]} scaling = {false} />
     <Planet planetParam = {planets["venus"] } scaling = {false} />
+    <Planet planetParam = {planets["earth"]} scaling = {false} />
     <Planet planetParam = {planets["mars"] } scaling = {false} />
     <Planet planetParam = {planets["jupiter"] } scaling = {false} />
     <Planet planetParam = {planets["saturn"] } scaling = {false} />

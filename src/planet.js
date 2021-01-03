@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes, { string } from "prop-types";
-import {setupScene} from "./Three.js";
+import {setupPlanet} from "./Three.js";
 
+const spaceURL = "https://i.stack.imgur.com/UJur5.png";
 const urlAPIbase = "https://api.le-systeme-solaire.net/rest.php/bodies?filter[]=englishName,eq,";
 
 const ContainerDiv = styled.div`
-background-color: black;
+background: url("${spaceURL}");
 height: 800px;
 `;
 const PlanetDivContainer = styled.div`
@@ -58,7 +59,7 @@ class PlanetScene extends React.Component{
 
   componentDidMount(){
     //draw the planets
-    setupScene(this.mount, this.state.textureURLs, this.state.radius, this.state.type, this.state.scaling);
+    setupPlanet(this.mount, this.state.textureURLs, this.state.radius);
     //ask API
     const urlAPI = `${urlAPIbase}${this.state.name}`;
     fetch(urlAPI)

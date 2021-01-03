@@ -4,8 +4,8 @@ module.exports = {
       "es6": true
   },
   "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended"
+    "eslint:recommended",
+    "plugin:react/recommended"
   ],
   "globals": {
       "Atomics": "readonly",
@@ -23,9 +23,9 @@ module.exports = {
       "react"
   ],
   "rules": {
-    "semi": ["error", "always"],
-    "quotes": ["error", "double", {"allowTemplateLiterals": true}],
-    "no-multiple-empty-lines": ["error", {"max": 1}],
-    "indent": ["error", 2]
+    "semi": ["warn", "always"],
+    "quotes": ["warn", "double", {"allowTemplateLiterals": true}],
+    "no-multiple-empty-lines": ["warn", {"max": 1}],
+    "indent": ["warn", 2]
   }
 };
