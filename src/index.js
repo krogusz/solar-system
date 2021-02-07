@@ -1,21 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Planet from "./planet.js";
+// import Planet from "./planet.js";
+// import Navigation  from "./nav.js";
 import reportWebVitals from "./reportWebVitals";
-import planets from "./planets.json";
+// import planets from "./planets.json";
+import App from "./App.js";
+// import PropTypes from "prop-types";
+
+
+// import styled from "styled-components";
+// import Scrollchor from 'react-scrollchor';
+
+// const NavContainer = styled.ul`
+// `;
+
+// const NavItem = styled.li`
+// `;
+
+// class PageSection extends Component {
+//   render() {
+//     return this.props.content
+//   }
+// }
+
+// PageSection.propTypes = {
+//   content: PropTypes.node.isRequired
+// }
+
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <System planetParam = {planets["sun"]}/> */}
-    <Planet planetParam = {planets["mercury"]} scaling = {false}/>
-    <Planet planetParam = {planets["venus"] } scaling = {false} />
-    <Planet planetParam = {planets["earth"]} scaling = {false} />
-    <Planet planetParam = {planets["mars"] } scaling = {false} />
-    <Planet planetParam = {planets["jupiter"] } scaling = {false} />
-    <Planet planetParam = {planets["saturn"] } scaling = {false} />
-    <Planet planetParam = {planets["uranus"] } scaling = {false} />
-    <Planet planetParam = {planets["neptune"] } scaling = {false}/>
+
+    <App/>
   </React.StrictMode>,
   document.getElementById("root")
 );

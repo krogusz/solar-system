@@ -3,9 +3,9 @@ import styled from "styled-components";
 import PropTypes, { string } from "prop-types";
 import {setupPlanet} from "./Three.js";
 
-const ContainerDiv = styled.div`
-height: 100%;
-`;
+// const ContainerDiv = styled.div`
+// height: 100%;
+// `;
 const PlanetDivContainer = styled.div`
 background-color: black;
 width: 100%;
@@ -21,16 +21,16 @@ top:50%;
 transform: translateY(-50%);
 `;
 
-const PlanetName = styled.h2`
-position: absolute;
-left: 50%;
-transform: translateX(-50%);
-top: 2%;
-background-color: black;
-color: white;
-text-align: center;
-text-transform: capitalize;
-`;
+// const PlanetName = styled.h2`
+// position: absolute;
+// left: 50%;
+// transform: translateX(-50%);
+// top: 2%;
+// background-color: black;
+// color: white;
+// text-align: center;
+// text-transform: capitalize;
+// `;
 
 class PlanetScene extends React.Component{
   constructor(props){
@@ -45,16 +45,16 @@ class PlanetScene extends React.Component{
  
   render(){
     return(
-      <ContainerDiv>
+      // <ContainerDiv>
         <PlanetDivContainer>
-        <PlanetName>{this.state.name}</PlanetName>
+        {/* <PlanetName>{this.state.name}</PlanetName> */}
           <PlanetDiv
             ref={mount => {
               this.mount = mount;
             }}>
           </PlanetDiv>
         </PlanetDivContainer>
-      </ContainerDiv>
+      // </ContainerDiv>
     );
   }
 }

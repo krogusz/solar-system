@@ -11,18 +11,7 @@
     "AU": "0.404",
     "speedRatio": "1.59"
   },
-  "earth":{
-    "textureURLs": {
-      "planet": "https://supernova.eso.org/static/archives/exhibitionimages/screen/Earth_30k-with-clouds-CC.jpg",
-      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/earthbump1k.jpg"
-    },
-    "radius": "1",
-    "type": "inner",
-    "name": "earth",
-    "desc": "Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 29% of Earth's surface is land consisting of continents and islands. The remaining 71% is covered with water, mostly by oceans but also lakes, rivers and other fresh water, which together constitute the hydrosphere. Much of Earth's polar regions are covered in ice.",
-    "AU": "1",
-    "speedRatio": "1"
-  },
+  
   "venus":{
     "textureURLs": {
       "planet": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/venusmap.jpg",
@@ -34,6 +23,18 @@
     "desc": "Venus is the second planet from the Sun. It is named after the Roman goddess of love and beauty. As the second-brightest natural object in the night sky after the Moon, Venus can cast shadows and can be, on rare occasion, visible to the naked eye in broad daylight.[15][16] Venus lies within Earth's orbit, and so never appears to venture far from the Sun, either setting in the west just after dusk or rising in the east a bit before dawn.",
     "AU": "0.7",
     "speedRatio": "1.18"
+  },
+  "earth":{
+    "textureURLs": {
+      "planet": "https://supernova.eso.org/static/archives/exhibitionimages/screen/Earth_30k-with-clouds-CC.jpg",
+      "bump": "https://raw.githubusercontent.com/jeromeetienne/threex.planets/master/images/earthbump1k.jpg"
+    },
+    "radius": "1",
+    "type": "inner",
+    "name": "earth",
+    "desc": "Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 29% of Earth's surface is land consisting of continents and islands. The remaining 71% is covered with water, mostly by oceans but also lakes, rivers and other fresh water, which together constitute the hydrosphere. Much of Earth's polar regions are covered in ice.",
+    "AU": "1",
+    "speedRatio": "1"
   },
   "mars":{
     "textureURLs": {
