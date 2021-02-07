@@ -1,8 +1,6 @@
 const THREE = window.THREE;
 import {TrackballControls} from "three/examples/jsm/controls/TrackballControls.js";
 const scale = 10/109;
-// const velocity = 0.008;
-// const planetMotion = false;
 
 function setupRenderer(container){
   //create renderer, match their size and append to the document
@@ -93,11 +91,6 @@ const handleResize = (renderer, camera) => {
   camera.updateProjectionMatrix();
 };
 
-// const rotatePlanet = (planet, ratio) => {
-//   planet.rotation.y  += ratio*velocity;
-//   requestAnimationFrame(() => rotatePlanet(planet, ratio));
-// };
-
 const createStars = (scene) => {
   const starsMaterials = [
     new THREE.PointsMaterial( { color: 0x555555, size: 2, sizeAttenuation: false } ),
@@ -187,34 +180,5 @@ const setupPlanet = (container, textureURLs, radius, scaling = false, sun = fals
     })
     .catch(err => console.log(err));
 };
-
-// Define all solar system. This element is not used yet.
-// const setupSystem = (container, planetsInfo, sunTextures, sunRadius ) => {
-//   const sun = setupPlanet(container, sunTextures, sunRadius, true, true);
-//   sun.then(scene => {
-//     Object.keys(planetsInfo).map(planet => {
-//       const Mesh = createMesh(planetsInfo[planet]["radius"], true);
-//       const {cube, pivot} = Mesh;
-//       const AU = planetsInfo[planet]["AU"];
-//       const speedRatio = planetsInfo[planet]["speedRatio"];
-      
-//       Promise.all(createTextures(planetsInfo[planet]["urls"]))
-//         .then(([earthtexture, bumptexture]) => {
-//           cube.material.map = earthtexture;
-//           cube.material.needsUpdate = true;
-//           cube.material.bumpMap = bumptexture;
-//           cube.material.bumpScale = 0;
-//           cube.position.set(AU*15,0,0);
-//           scene.add(pivot);
-//           if (!planetMotion) {rotatePlanet(pivot, speedRatio);}
-//         })
-//         .catch(
-//           err => {
-//             console.log(err);
-//           }
-//         );
-//     });
-//   });
-// };
 
 export {setupPlanet};

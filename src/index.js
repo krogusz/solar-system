@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import Planet from "./planet.js";
-// import System from "./solar-system.js";
 import reportWebVitals from "./reportWebVitals";
 import planets from "./planets.json";
 
