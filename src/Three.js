@@ -4,11 +4,12 @@ const scale = 10/109;
 const velocity = 0.008;
 const planetMotion = false;
 
-function setupRenderer(container, sun = false){
+function setupRenderer(container){
   //create renderer, match their size and append to the document
   const renderer = new THREE.WebGLRenderer({antialias: true,  alpha: true});
-  const rendererWidth = sun? window.innerWidth : window.innerWidth/2;
-  renderer.setSize( rendererWidth, 800 );
+  const rendererWidth = window.innerWidth;
+  const renderHeight = window.innerHeight;
+  renderer.setSize( rendererWidth, renderHeight );
   container.appendChild( renderer.domElement );
   return renderer;
 }
@@ -83,11 +84,12 @@ function animate(renderer, scene, camera, cube, controls, clock) {
   renderer.render(scene, camera);
 }
 
-const handleResize = (renderer, camera, sun) => {
-  const {innerWidth} = window;
-  const rendererWidth = sun ? innerWidth : innerWidth/2;
-  renderer.setSize(rendererWidth, 800);
-  camera.aspect = (rendererWidth) / 800;
+const handleResize = (renderer, camera) => {
+  const {innerWidth, innerHeight} = window;
+  const rendererWidth = innerWidth ;
+  const renderHeight = innerHeight;
+  renderer.setSize(rendererWidth, renderHeight);
+  camera.aspect = (rendererWidth) / renderHeight;
   camera.updateProjectionMatrix();
 };
 
@@ -96,18 +98,79 @@ const rotatePlanet = (planet, ratio) => {
   requestAnimationFrame(() => rotatePlanet(planet, ratio));
 };
 
+const createStars = (scene) => {
+  const starsMaterials = [
+    new THREE.PointsMaterial( { color: 0x555555, size: 2, sizeAttenuation: false } ),
+    new THREE.PointsMaterial( { color: 0x555555, size: 1, sizeAttenuation: false } ),
+    new THREE.PointsMaterial( { color: 0x333333, size: 2, sizeAttenuation: false } ),
+    new THREE.PointsMaterial( { color: 0x3a3a3a, size: 1, sizeAttenuation: false } ),
+    new THREE.PointsMaterial( { color: 0x1a1a1a, size: 2, sizeAttenuation: false } ),
+    new THREE.PointsMaterial( { color: 0x1a1a1a, size: 1, sizeAttenuation: false } )
+  ];
+
+  const r = 14;
+  const vertices1 = [];
+  const vertices2 = [];
+  const vertex = new THREE.Vector3();
+// 250
+  for ( let i = 0; i < 100; i ++ ) {
+    //może tutaj
+    vertex.x = Math.random() * 2 - 1;
+    vertex.y = Math.random() * 2 - 1;
+    vertex.z = Math.random() * 2 - 1;
+    vertex.multiplyScalar( r );
+
+    vertices1.push( vertex.x, vertex.y, vertex.z );
+
+  }
+// 1500
+  for ( let i = 0; i < 500; i ++ ) {
+
+    vertex.x = Math.random() * 2 - 1;
+    vertex.y = Math.random() * 2 - 1;
+    vertex.z = Math.random() * 2 - 1;
+    vertex.multiplyScalar( r );
+
+    vertices2.push( vertex.x, vertex.y, vertex.z );
+
+  }
+
+  const starsGeometry = [ new THREE.BufferGeometry(), new THREE.BufferGeometry() ];
+  starsGeometry[ 0 ].setAttribute( 'position', new THREE.Float32BufferAttribute( vertices1, 3 ) );
+  starsGeometry[ 1 ].setAttribute( 'position', new THREE.Float32BufferAttribute( vertices2, 3 ) );
+
+  for ( let i = 10; i < 30; i ++ ) {
+
+    const stars = new THREE.Points( starsGeometry[ i % 2 ], starsMaterials[ i % 6 ] );
+
+    stars.rotation.x = Math.random() * 6;
+    stars.rotation.y = Math.random() * 6;
+    stars.rotation.z = Math.random() * 6;
+    stars.scale.setScalar( i * 10 );
+
+    stars.matrixAutoUpdate = false;
+    stars.updateMatrix();
+
+    scene.add( stars );
+
+  }
+}
+
 const setupPlanet = (container, textureURLs, radius, scaling = false, sun = false) => {
   // create scene
   const scene = new THREE.Scene();
   const camera = setupCamera();
   const renderer = setupRenderer(container, sun);
   var controls = new TrackballControls( camera, renderer.domElement );
+  controls.maxDistance = 150;
+  controls.minDistance = 20;
   let clock = new THREE.Clock();
   const light1 = createLight(-40, -20, 20);
   const light2 = createLight(40, 20, 20);
   // add cube and light to scene
   scene.add(light1);
   scene.add(light2);
+  createStars(scene);
   const Mesh = createMesh(radius, scaling);
   const {cube} = Mesh;
   
@@ -118,7 +181,6 @@ const setupPlanet = (container, textureURLs, radius, scaling = false, sun = fals
       cube.material.bumpMap = bumptexture;
       cube.material.bumpScale = 0;
       scene.add(cube);
-      console.log(clock);
       animate(renderer, scene, camera, cube, controls, clock);
       window.addEventListener("resize", handleResize(renderer, camera, sun));
       return(scene);
