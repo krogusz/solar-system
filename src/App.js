@@ -8,7 +8,7 @@ const planetsNames = Object.keys(planets);
 
 const Container = styled.div`
 position: relative;
-`
+`;
 const PlanetSection = styled.div`
 height: 952px;
 `;
@@ -18,13 +18,13 @@ class App extends React.Component{
   render(){
     return(
       <Container>
-      <Navigation planetNames = {planetsNames}/>
-      {planetsNames.map(name => (
-        <PlanetSection key = {name} id = {name}><Planet  planetParam = {planets[name]} scaling = {false}/></PlanetSection>
-      ))}
+        <Navigation planetNames = {planetsNames}/>
+        {planetsNames.map(name => (
+          <PlanetSection key = {name} id = {name}><Planet  planetParam = {planets[name]} scaling = {false}/></PlanetSection>
+        ))}
       </Container>
-    )
+    );
   }
 }
 
-export default App
+export default App;

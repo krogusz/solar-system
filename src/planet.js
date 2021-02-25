@@ -3,7 +3,6 @@ import styled from "styled-components";
 import PropTypes, { string } from "prop-types";
 import {setupPlanet} from "./Three.js";
 
-
 const PlanetDivContainer = styled.div`
 background-color: black;
 width: 100%;
@@ -19,7 +18,6 @@ top:50%;
 transform: translateY(-50%);
 `;
 
-
 class PlanetScene extends React.Component{
   constructor(props){
     super(props);
@@ -33,13 +31,13 @@ class PlanetScene extends React.Component{
  
   render(){
     return(
-        <PlanetDivContainer>
-          <PlanetDiv
-            ref={mount => {
-              this.mount = mount;
-            }}>
-          </PlanetDiv>
-        </PlanetDivContainer>
+      <PlanetDivContainer>
+        <PlanetDiv
+          ref={mount => {
+            this.mount = mount;
+          }}>
+        </PlanetDiv>
+      </PlanetDivContainer>
     );
   }
 }

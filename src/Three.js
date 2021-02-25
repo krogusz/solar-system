@@ -1,6 +1,5 @@
 const THREE = window.THREE;
 import {TrackballControls} from "three/examples/jsm/controls/TrackballControls.js";
-const scale = 10/109;
 
 function setupRenderer(container){
   //create renderer, match their size and append to the document
@@ -28,8 +27,8 @@ function createLight(pozX, pozY, pozZ){
   return light;
 }
 
-function createMesh(radius, scaling){
-  const r = scaling ? Number(radius)*scale : 10;
+function createMesh(){
+  const r =  10;
   const geometry = new THREE.SphereGeometry(r, 32, 32);
   const material = new THREE.MeshBasicMaterial( {} );
   const cube = new THREE.Mesh( geometry, material );
@@ -105,55 +104,50 @@ const createStars = (scene) => {
   const vertices1 = [];
   const vertices2 = [];
   const vertex = new THREE.Vector3();
-// 250
+
   for ( let i = 0; i < 100; i ++ ) {
-    //może tutaj
     vertex.x = Math.random() * 2 - 1;
     vertex.y = Math.random() * 2 - 1;
     vertex.z = Math.random() * 2 - 1;
     vertex.multiplyScalar( r );
-
     vertices1.push( vertex.x, vertex.y, vertex.z );
 
   }
-// 1500
+
   for ( let i = 0; i < 500; i ++ ) {
 
     vertex.x = Math.random() * 2 - 1;
     vertex.y = Math.random() * 2 - 1;
     vertex.z = Math.random() * 2 - 1;
     vertex.multiplyScalar( r );
-
     vertices2.push( vertex.x, vertex.y, vertex.z );
 
   }
 
   const starsGeometry = [ new THREE.BufferGeometry(), new THREE.BufferGeometry() ];
-  starsGeometry[ 0 ].setAttribute( 'position', new THREE.Float32BufferAttribute( vertices1, 3 ) );
-  starsGeometry[ 1 ].setAttribute( 'position', new THREE.Float32BufferAttribute( vertices2, 3 ) );
+  starsGeometry[ 0 ].setAttribute( "position", new THREE.Float32BufferAttribute( vertices1, 3 ) );
+  starsGeometry[ 1 ].setAttribute( "position", new THREE.Float32BufferAttribute( vertices2, 3 ) );
 
   for ( let i = 10; i < 30; i ++ ) {
 
     const stars = new THREE.Points( starsGeometry[ i % 2 ], starsMaterials[ i % 6 ] );
-
     stars.rotation.x = Math.random() * 6;
     stars.rotation.y = Math.random() * 6;
     stars.rotation.z = Math.random() * 6;
     stars.scale.setScalar( i * 10 );
-
     stars.matrixAutoUpdate = false;
     stars.updateMatrix();
 
     scene.add( stars );
 
   }
-}
+};
 
-const setupPlanet = (container, textureURLs, radius, scaling = false, sun = false) => {
+const setupPlanet = (container, textureURLs) => {
   // create scene
   const scene = new THREE.Scene();
   const camera = setupCamera();
-  const renderer = setupRenderer(container, sun);
+  const renderer = setupRenderer(container);
   var controls = new TrackballControls( camera, renderer.domElement );
   controls.maxDistance = 150;
   controls.minDistance = 20;
@@ -164,7 +158,7 @@ const setupPlanet = (container, textureURLs, radius, scaling = false, sun = fals
   scene.add(light1);
   scene.add(light2);
   createStars(scene);
-  const Mesh = createMesh(radius, scaling);
+  const Mesh = createMesh();
   const {cube} = Mesh;
   
   return Promise.all(createTextures(textureURLs))
@@ -175,7 +169,7 @@ const setupPlanet = (container, textureURLs, radius, scaling = false, sun = fals
       cube.material.bumpScale = 0;
       scene.add(cube);
       animate(renderer, scene, camera, cube, controls, clock);
-      window.addEventListener("resize", handleResize(renderer, camera, sun));
+      window.addEventListener("resize", handleResize(renderer, camera));
       return(scene);
     })
     .catch(err => console.log(err));
