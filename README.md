@@ -1,4 +1,4 @@
-This simple React App with Three.js library show you all planets of the Solar System.
+This simple React App with Three.js library shows you all planets of the Solar System.
 
 Run the app in the development mode.\ with `yarn start`
 
