@@ -1,0 +1,14 @@
+{
+  "mercury":{
+    "textureURLs": {
+      "planet": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Enhanced_Color_Mercury_Map_%289312772919%29.jpg",
+      "bump": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ea752771-c82e-4eb6-954b-8ae5a5a63733/da72f67-dfbbda62-9aed-484d-8883-f99f9e5df19f.jpg/v1/fill/w_1024,h_512,q_75,strp/mercury_bump_map__not_mine__by_kexitt_da72f67-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01MTIiLCJwYXRoIjoiXC9mXC9lYTc1Mjc3MS1jODJlLTRlYjYtOTU0Yi04YWU1YTVhNjM3MzNcL2RhNzJmNjctZGZiYmRhNjItOWFlZC00ODRkLTg4ODMtZjk5ZjllNWRmMTlmLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.Yve3Z5Mr29IYugMVsgptIa9RF0TjsrBnGztOpSeCsk0"
+    },
+    "radius": "0.383",
+    "type": "inner",
+    "name": "mercury",
+    "desc": "Mercury is the smallest and innermost planet in the Solar System. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the planets in the Solar System. It is named after the Greek god Hermes (Ερμής), translated into Latin Mercurius Mercury, god of commerce, messenger of the gods, mediator between gods and mortals. Like Venus, Mercury orbits the Sun within Earth's orbit as an inferior planet, and its apparent distance from the Sun as viewed from Earth never exceeds 28°.  This proximity to the Sun means the planet can only be seen near the western horizon after sunset or eastern horizon before sunrise, usually in twilight. \r Mercury appears to have a solid silicate crust and mantle overlying a solid, iron sulfide outer core layer, a deeper liquid core layer, and a solid inner core. Mercury is one of four terrestrial planets in the Solar System, and is a rocky body like Earth. It is the smallest planet in the Solar System, with an equatorial radius of 2,439.7 kilometres. Mercury is also smaller—albeit more massive—than the largest natural satellites in the Solar System, Ganymede and Titan.",
+    "AU": "0.404",
+    "speedRatio": "1.59"
+  }
+}

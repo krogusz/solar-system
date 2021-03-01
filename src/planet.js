@@ -26,7 +26,7 @@ class PlanetScene extends React.Component{
   }
 
   componentDidMount(){
-    setupPlanet(this.mount, this.state.textureURLs, this.state.radius);
+    setupPlanet(this.mount, this.state.textureURLs, this.state.ring);
   }
  
   render(){

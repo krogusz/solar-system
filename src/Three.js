@@ -14,7 +14,7 @@ function setupRenderer(container){
 function setupCamera(){
   //create camera
   const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.00001, 1000 );
-  camera.position.z = 100;
+  camera.position.z = 80;
   return camera;
 }
 
@@ -40,7 +40,7 @@ function createMesh(){
   };
 }
 
-function createTextures(textureURLs){
+function createTextures(textureURLs, ifRing){
   const loader = new THREE.TextureLoader();
   const earthtexture = new Promise((resolve, reject)=>{
     loader.load(
@@ -71,7 +71,25 @@ function createTextures(textureURLs){
       }
     );}
   );
-  return [earthtexture, bumptexture];
+  if(ifRing){
+    const ringTexture = new Promise((resolve, reject)=>{
+      loader.load(
+        textureURLs.ring,
+        function ( texture ) {  
+          resolve(texture);
+        },
+        // onProgress callback currently not supported
+        undefined,
+        // onError callback
+        function ( err ) {
+          reject( err );
+        }
+      );}
+    );
+    return [earthtexture, bumptexture, ringTexture];
+  }else{
+    return [earthtexture, bumptexture];
+  }
 }
     
 function animate(renderer, scene, camera, cube, controls, clock) {
@@ -129,7 +147,6 @@ const createStars = (scene) => {
   starsGeometry[ 1 ].setAttribute( "position", new THREE.Float32BufferAttribute( vertices2, 3 ) );
 
   for ( let i = 10; i < 30; i ++ ) {
-
     const stars = new THREE.Points( starsGeometry[ i % 2 ], starsMaterials[ i % 6 ] );
     stars.rotation.x = Math.random() * 6;
     stars.rotation.y = Math.random() * 6;
@@ -137,20 +154,35 @@ const createStars = (scene) => {
     stars.scale.setScalar( i * 10 );
     stars.matrixAutoUpdate = false;
     stars.updateMatrix();
-
     scene.add( stars );
 
   }
 };
 
-const setupPlanet = (container, textureURLs) => {
+function createSaturnRing(){
+  var geometry = new THREE.RingBufferGeometry( 20, 15, 300 );
+  var pos = geometry.attributes.position;
+  var v3 = new THREE.Vector3();
+  for (let i = 0; i < pos.count; i++){
+    v3.fromBufferAttribute(pos, i);
+    geometry.attributes.uv.setXY(i, v3.length() < 19.999999 ? 0 : 1, 1);
+  }
+
+  const material = new THREE.MeshBasicMaterial( {} );
+
+  var mesh = new THREE.Mesh(geometry, material);
+  mesh.lookAt(new THREE.Vector3(0, 90, 30));
+  return mesh;
+}
+
+const setupPlanet = (container, textureURLs, ifRing) => {
   // create scene
   const scene = new THREE.Scene();
   const camera = setupCamera();
   const renderer = setupRenderer(container);
   var controls = new TrackballControls( camera, renderer.domElement );
-  controls.maxDistance = 150;
-  controls.minDistance = 20;
+  controls.maxDistance = 130;
+  controls.minDistance = 50;
   let clock = new THREE.Clock();
   const light1 = createLight(-40, -20, 20);
   const light2 = createLight(40, 20, 20);
@@ -160,14 +192,26 @@ const setupPlanet = (container, textureURLs) => {
   createStars(scene);
   const Mesh = createMesh();
   const {cube} = Mesh;
-  
-  return Promise.all(createTextures(textureURLs))
-    .then(([earthtexture, bumptexture]) => {
+
+  if (ifRing){
+    var ring = createSaturnRing();}
+
+  return Promise.all(createTextures(textureURLs, ifRing))
+    .then(([earthtexture, bumptexture, ringtexture]) => {
       cube.material.map = earthtexture;
       cube.material.needsUpdate = true;
       cube.material.bumpMap = bumptexture;
       cube.material.bumpScale = 0;
-      scene.add(cube);
+
+      if (ifRing){
+        ring.material.map = ringtexture;
+        ring.material.side = THREE.DoubleSide;
+        ring.material.transparent = true;
+        scene.add(cube, ring);
+      }else{
+        scene.add(cube);
+      }
+
       animate(renderer, scene, camera, cube, controls, clock);
       window.addEventListener("resize", handleResize(renderer, camera));
       return(scene);
