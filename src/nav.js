@@ -13,20 +13,21 @@ const EmptyElem = styled.li`
 display: inline-block;
 width:5%;
 `;
-const NavItem = styled.button`
+const NavItem = styled.li`
 width: 10%;
 display: inline-block;
-background: transparent;
-border: none;
-outline: none;
 `;
 
 const Scroll = styled(Scrollchor)`
-color: white;
-text-decoration: none;
-text-align:justify;
-transition: font-size 1s;
 `;
+
+const NameButton = styled.button`
+background: transparent;
+border: none;
+outline: none;
+color: white;
+transition: font-size 1s;
+`
 
 class Navigation extends React.Component{
   constructor(props){
@@ -48,10 +49,14 @@ class Navigation extends React.Component{
       <NavContainer>
         <EmptyElem />
         {this.props.planetNames.map(name => (
-          <NavItem onClick = {(e)=> this.enlarge(e,name)} key = {name}>
+          <NavItem  key = {name}>
             <Scroll to={`#${name}`}  
+              >
+              <NameButton 
+              onClick = {(e)=> this.enlarge(e,name)}
               style={{color : this.state.enlarge === name ? "#ffe680" : "white", fontSize : this.state.enlarge === name ? "25px" : "20px"}}>
-              {name}
+                {name}
+              </NameButton>
             </Scroll>
           </NavItem>
         ))}
