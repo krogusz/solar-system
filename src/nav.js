@@ -28,7 +28,7 @@ border: none;
 outline: none;
 color: white;
 transition: font-size 1s;
-`
+`;
 
 class Navigation extends React.Component{
   constructor(props){
@@ -52,10 +52,10 @@ class Navigation extends React.Component{
         {this.props.planetNames.map(name => (
           <NavItem  key = {name}>
             <Scroll to={`#${name}`}  
-              >
+            >
               <NameButton 
-              onClick = {(e)=> this.enlarge(e,name)}
-              style={{color : this.state.enlarge === name ? "#ffe680" : "white", fontSize : this.state.enlarge === name ? "25px" : "20px"}}>
+                onClick = {(e)=> this.enlarge(e,name)}
+                style={{color : this.state.enlarge === name ? "#ffe680" : "white", fontSize : this.state.enlarge === name ? "25px" : "20px"}}>
                 {name}
               </NameButton>
             </Scroll>
