@@ -7,6 +7,7 @@ const NavContainer = styled.ul`
 position: fixed;
 z-index: 99999;
 width:100%;
+min-width: 1843px;
 `;
 
 const EmptyElem = styled.li`
